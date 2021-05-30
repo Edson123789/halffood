@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:halfood/src/features/presentation/commons_widgets/alert_dialog.dart';
 import 'package:halfood/src/features/presentation/tabs/explore_tab/View/explore_tab.dart';
 import 'package:halfood/src/features/presentation/tabs/favourite_tab/View/favourite_tab.dart';
 import 'package:halfood/src/features/presentation/tabs/order_tab/View/order_tab.dart';
@@ -13,6 +14,14 @@ class TabsPage extends StatefulWidget {
 }
 
 class _TabsPageState extends State<TabsPage> {
+  @override
+  void initState() { 
+    super.initState();
+    Future.delayed(Duration.zero, (){
+      _pedirLocation(context);
+    });
+  }
+
   List <Widget> _widgetOptions = [
     ExploreTab(),
     MyOrderTab(),
@@ -65,5 +74,9 @@ class _TabsPageState extends State<TabsPage> {
         ),
       ]
     );
+  }
+
+  Future _pedirLocation(BuildContext context) async {
+    showAlertDialog(context, imagePath, headerTitle, headerSubTitle, labelButton, doneButton)
   }
 }

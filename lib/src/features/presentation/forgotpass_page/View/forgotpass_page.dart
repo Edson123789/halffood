@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:halfood/src/features/presentation/commons_widgets/alert_dialog.dart';
 import 'package:halfood/src/features/presentation/commons_widgets/back_button.dart';
+import 'package:halfood/src/features/presentation/commons_widgets/done_button.dart';
 import 'package:halfood/src/features/presentation/commons_widgets/headers_text.dart';
 
 class ForgotPassword extends StatelessWidget {
@@ -88,66 +90,12 @@ Widget _sendButton(BuildContext context){
 }
 
 void _showAlert(BuildContext context){
-  showDialog(
-    context: context,
-    barrierDismissible: true, //si se clickea fuera se cierra la alerta
-    builder: (BuildContext context){
-      return AlertDialog(
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.all(Radius.circular(20.0))
-        ),
-        content: Container(
-          height: 400,
-          child: Column(
-            children: [
-              Image(
-                image: AssetImage('assets/block.png'),
-                width: 130,
-                height: 130,
-              ),
-              
-              Container(
-                margin: EdgeInsets.all(15.0),
-                child: headerText('¡Genial! Tu contraseña ha sido restaurada', Theme.of(context).primaryColor, FontWeight.bold, 20.0),
-              ),
-              Container(
-                padding: EdgeInsets.all(15.0),
-                child: Text('Recibirás un email con un código para crear una nueva contraseña.', 
-                    textAlign: TextAlign.justify,
-                    style: TextStyle(
-                          color: Theme.of(context).primaryColor,
-                          fontWeight: FontWeight.w400,
-                          fontSize: 15.0,
-                          
-                  )
-                ),
-              ),
-              _doneButton(context)
-            ],
-          ),
-        ),
-
-      );
-    }
-  );
+  showAlertDialog(
+    context, 
+    AssetImage('assets/block.png'), 
+    '¡Genial! Tu contraseña ha sido restaurada', 
+    'Recibirás un email con un código para crear una nueva contraseña.', 
+    'Listo!', 
+    doneButton(context, 'Listo!'));
 }
 
-Widget _doneButton(BuildContext context){
-  return  Container(
-                width: 350.0,
-                height: 45.0,
-                margin: EdgeInsets.only(top: 40.0),
-                child: RaisedButton(
-                 onPressed: (){
-                   Navigator.pushNamed(context, 'login');
-                 },
-                 shape: RoundedRectangleBorder(
-                   borderRadius: BorderRadius.circular(20.0)),
-                  color: Theme.of(context).accentColor,
-                  child: Text('Listo!',style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 17.0
-                    ),),
-                ),
-              );
-}
