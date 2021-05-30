@@ -95,7 +95,6 @@ void _showAlert(BuildContext context){
     AssetImage('assets/block.png'), 
     '¡Genial! Tu contraseña ha sido restaurada', 
     'Recibirás un email con un código para crear una nueva contraseña.', 
-    'Listo!', 
     doneButton(context, 'Listo!'));
 }
 

@@ -7,7 +7,6 @@ void showAlertDialog(
   ImageProvider <Object> imagePath, 
   String headerTitle, 
   String headerSubTitle, 
-  String labelButton, 
   Widget doneButton
   ) async {
   await showDialog(
